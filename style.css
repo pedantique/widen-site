@@ -153,23 +153,33 @@ html { scroll-padding-top: 64px; }
 .d-btn { fill: var(--d-btn); opacity: .8; }
 
 /* ---------- Before / after ---------- */
-.flip { max-width: 330px; margin: 0 auto; text-align: center; }
+.flip { max-width: 350px; margin: 0 auto; text-align: center; }
+.slides {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
+}
+.slides::-webkit-scrollbar { display: none; }
+.slides:focus-visible { outline: 2px solid var(--navy-b); outline-offset: 4px; border-radius: 12px; }
+.slide { flex: 0 0 100%; scroll-snap-align: center; padding: 6px 10px 18px; box-sizing: border-box; }
 .flip-pics { display: grid; }
 .flip-pics img {
   grid-area: 1 / 1; display: block; width: 100%; height: auto; background: #fff;
   border: 9px solid #1b1d24; border-left-width: 6px; border-radius: 6px 34px 34px 6px;
-  box-shadow: 0 14px 30px rgba(20, 26, 46, .22); transition: opacity .45s ease;
+  box-shadow: 0 8px 16px rgba(20, 26, 46, .18); transition: opacity .45s ease;
 }
 .flip[data-state="after"] .pic-before, .flip[data-state="before"] .pic-after { opacity: 0; }
-.flip-ctl { display: inline-flex; margin-top: 16px; background: var(--band); border-radius: 999px; padding: 4px; }
+.slide-cap { margin-top: 12px; font-size: .92rem; color: var(--soft); min-height: 2.9em; }
+.slide-cap b { color: var(--ink); margin-right: 4px; }
+.flip[data-state="after"] .cap-before, .flip[data-state="before"] .cap-after { display: none; }
+.dots { display: flex; justify-content: center; gap: 8px; margin-top: 2px; }
+.dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: var(--rule); cursor: pointer; }
+.dots button[aria-selected="true"] { background: var(--navy-b); width: 20px; border-radius: 4px; }
+.flip-ctl { display: inline-flex; margin-top: 12px; background: var(--band); border-radius: 999px; padding: 4px; }
 .flip-ctl button {
   font: inherit; font-size: .9rem; font-weight: 600; color: var(--soft);
   background: none; border: 0; border-radius: 999px; padding: 7px 16px; cursor: pointer;
 }
 .flip-ctl button[aria-pressed="true"] { background: var(--navy-b); color: var(--glyph-ink, #fff); }
-.flip figcaption { margin-top: 10px; font-size: .92rem; color: var(--soft); min-height: 2.9em; }
-.flip[data-state="after"] .cap-before, .flip[data-state="before"] .cap-after { display: none; }
-.flip .credit { margin-top: 4px; }
 .flip-ctl em, .steps h3 em { font-style: italic; }
 /* the bar's icon starts hidden on the home page and appears as the big one shrinks into it */
 .shrinking .bar-brand { opacity: 0; }

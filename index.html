@@ -39,18 +39,24 @@
     </div>
 
     <figure class="flip" data-state="after">
-      <div class="flip-pics">
-        <img class="pic-before" src="img/before.jpg" width="932" height="1356" alt="Wikipedia's iPhone Duo article in Safari on the closed Duo, without Widen: the page stops well short of Safari's buttons, leaving an empty band">
-        <img class="pic-after" src="img/after.jpg" width="932" height="1356" alt="The same article with Widen: the info box fills the full width and the text runs up to Safari's buttons">
+      <!-- One .slide per website. Each needs a before and an after image from the
+           closed Duo (1398x2034 simulator shots, exported at 932 wide). -->
+      <div class="slides" tabindex="0" aria-label="Websites without and with Widen; swipe for more">
+        <div class="slide" data-site="Wikipedia">
+          <div class="flip-pics">
+            <img class="pic-before" src="img/before.jpg" width="932" height="1356" alt="Wikipedia's iPhone Duo article in Safari on the closed Duo, without Widen: the page stops well short of Safari's buttons, leaving an empty band">
+            <img class="pic-after" src="img/after.jpg" width="932" height="1356" alt="The same article with Widen: the info box fills the full width and the text runs up to Safari's buttons">
+          </div>
+          <p class="slide-cap"><b>Wikipedia</b>
+            <span class="cap-before">The page stops short; the band by the buttons is empty.</span>
+            <span class="cap-after">The box fills the width; the text runs up to the buttons.</span></p>
+        </div>
       </div>
+      <div class="dots" role="tablist" aria-label="Choose a website"></div>
       <div class="flip-ctl" role="group" aria-label="Compare">
         <button type="button" data-show="before">Without <em>Widen</em></button>
         <button type="button" data-show="after">With <em>Widen</em></button>
       </div>
-      <figcaption>
-        <span class="cap-before">The page stops short; the band by the buttons is empty.</span>
-        <span class="cap-after">The box fills the width; the text runs up to the buttons.</span>
-      </figcaption>
     </figure>
   </div>
 </header>
@@ -134,9 +140,32 @@
     for (const b of fig.querySelectorAll('[data-show]')) b.setAttribute('aria-pressed', String(b.dataset.show === s));
   };
   show('after');
-  const timer = still ? 0 : setInterval(() => show(fig.dataset.state === 'after' ? 'before' : 'after'), 2800);
+  let timer = still ? 0 : setInterval(() => show(fig.dataset.state === 'after' ? 'before' : 'after'), 2800);
+  const stop = () => { clearInterval(timer); timer = 0; };
   for (const b of fig.querySelectorAll('[data-show]')) {
-    b.addEventListener('click', () => { clearInterval(timer); show(b.dataset.show); });
+    b.addEventListener('click', () => { stop(); show(b.dataset.show); });
+  }
+
+  // Carousel: one slide per website, with a dot for each (only when there's more than one).
+  const track = fig.querySelector('.slides');
+  const slides = [...track.querySelectorAll('.slide')];
+  const dots = fig.querySelector('.dots');
+  if (slides.length > 1) {
+    slides.forEach((s, i) => {
+      const d = document.createElement('button');
+      d.type = 'button'; d.setAttribute('role', 'tab'); d.setAttribute('aria-label', s.dataset.site);
+      d.addEventListener('click', () => { stop(); track.scrollTo({ left: s.offsetLeft - track.offsetLeft, behavior: still ? 'auto' : 'smooth' }); });
+      dots.append(d);
+    });
+    const mark = () => {
+      const i = Math.round(track.scrollLeft / track.clientWidth);
+      [...dots.children].forEach((d, j) => d.setAttribute('aria-selected', String(i === j)));
+    };
+    track.addEventListener('scroll', () => requestAnimationFrame(mark), { passive: true });
+    track.addEventListener('pointerdown', stop, { passive: true });
+    mark();
+  } else {
+    dots.hidden = true;
   }
 
   // The big title (icon, name and "for iPhone Duo") shrinks into the bar's
