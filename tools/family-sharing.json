@@ -1,0 +1,34 @@
+[
+ {
+  "file": "index.html",
+  "now": ", our launch price.",
+  "was": " across all your family&rsquo;s Duos, our launch price."
+ },
+ {
+  "file": "index.html",
+  "now": "",
+  "was": "\n      <p class=\"deal-family\">Across all your family&rsquo;s Duos, with Family Sharing.</p>",
+  "anchor": "Then US$3.99 for lifetime access.</p>"
+ },
+ {
+  "file": "index.html",
+  "now": "one purchase covers every Duo on your Apple Account.",
+  "was": "one purchase covers every Duo on your Apple Account and, through Family Sharing, your family&rsquo;s too."
+ },
+ {
+  "file": "support/index.html",
+  "now": "<strong>Bought it on another Duo?</strong>",
+  "was": "<strong>Bought it on another Duo, or through your family?</strong>"
+ },
+ {
+  "file": "support/index.html",
+  "now": " Use the same Apple Account.</li>",
+  "was": " It works with your own Apple Account, or a family member&rsquo;s through Family Sharing.</li>"
+ },
+ {
+  "file": "faq/index.html",
+  "now": "",
+  "was": "\n      <details>\n        <summary>Can my family use it too?</summary>\n        <p>Yes. <em>Widen</em> works with Family Sharing, so one purchase covers everyone in your family group who has an iPhone Duo. They open the <em>Widen</em> app and restore the purchase.</p>\n      </details>",
+  "anchor": "signed in with the same Apple Account, and restore your purchase.</p>\n      </details>"
+ }
+]
