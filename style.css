@@ -213,7 +213,7 @@ html { scroll-padding-top: 64px; }
   width: 28px; height: 28px; border-radius: 50%; background: var(--red); color: #fff;
   font-weight: 700; font-size: .9rem; display: flex; align-items: center; justify-content: center;
 }
-.aside { color: var(--soft); border-left: 3px solid var(--teal); padding-left: 14px; margin-top: 8px; }
+.aside { color: var(--soft); margin-top: 10px; }
 
 /* ---------- Extras ---------- */
 .extras { margin-top: 30px; display: grid; gap: 0; border-top: 1px solid var(--rule); }

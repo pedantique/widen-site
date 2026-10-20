@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#10101c" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" href="img/apple-touch-icon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="stylesheet" href="style.css?v=89829c75">
+<link rel="stylesheet" href="style.css?v=aa00ab6f">
 </head>
 <body>
 <nav class="bar" aria-label="Widen">
@@ -51,6 +51,17 @@
             <span class="cap-before">The page stops short; the band by the buttons is empty.</span>
             <span class="cap-after">The box fills the width; the text runs up to the buttons.</span></p>
         </div>
+        <div class="slide" data-site="The New York Times">
+          <div class="flip-pics">
+            <img class="pic-before" src="img/nyt-before.jpg" width="932" height="1356" loading="lazy" alt="An NYT article about the iPhone Duo on the closed Duo, without Widen: the lead photo stops short of Safari's buttons">
+            <img class="pic-after" src="img/nyt-after.jpg" width="932" height="1356" loading="lazy" alt="The same article with Widen: the photo runs under Safari's buttons while the headline stays clear of them">
+          </div>
+          <p class="slide-cap"><b>The New York Times</b>
+            <span class="cap-before">The photo stops short of the buttons.</span>
+            <span class="cap-after">The photo runs under the buttons; the headline stays clear.</span></p>
+        </div>
+        <!-- Google Maps slide (img/maps-before.jpg, img/maps-after.jpg) held back: in build 22 the map tiles
+             stayed grey under the strip after switching modes. Retake once the map itself fills the strip. -->
       </div>
       <div class="dots" role="tablist" aria-label="Choose a website"></div>
       <div class="flip-ctl" role="group" aria-label="Compare">
@@ -125,7 +136,7 @@
   <div class="wrap">
     <nav><a href="faq/">FAQ</a><a href="support/">Support</a><a href="privacy/">Privacy</a></nav>
     <p>&copy; 2026 Challis &amp; Company Pty Limited. Handtuned in Sydney, Australia.</p>
-    <p class="legal">Screenshots: Wikipedia, CC BY-SA 4.0.</p>
+    <p class="legal">Screenshots: Wikipedia (CC BY-SA 4.0), The New York Times. Shown to illustrate <em>Widen</em>; no affiliation or endorsement implied.</p>
     <p class="legal"><em>Widen</em> is an independent app, not affiliated with or endorsed by Apple. It changes only how pages are laid out on your display, on your iPhone, and does not host, copy or send their content. iPhone and Safari are trademarks of Apple Inc.</p>
   </div>
 </footer>
@@ -141,7 +152,7 @@
     for (const b of fig.querySelectorAll('[data-show]')) b.setAttribute('aria-pressed', String(b.dataset.show === s));
   };
   show('after');
-  let timer = still ? 0 : setInterval(() => show(fig.dataset.state === 'after' ? 'before' : 'after'), 2800);
+  let timer = 0;
   const stop = () => { clearInterval(timer); timer = 0; };
   for (const b of fig.querySelectorAll('[data-show]')) {
     b.addEventListener('click', () => { stop(); show(b.dataset.show); });
@@ -167,6 +178,18 @@
     mark();
   } else {
     dots.hidden = true;
+  }
+  // On its own: without, with, then on to the next site.
+  if (!still) {
+    let i = 0;
+    timer = setInterval(() => {
+      if (fig.dataset.state === 'before') return show('after');
+      if (slides.length > 1) {
+        i = (Math.round(track.scrollLeft / track.clientWidth) + 1) % slides.length;
+        track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: 'smooth' });
+      }
+      show('before');
+    }, 2800);
   }
 
   // The big title shrinks into the bar as the page scrolls up: the icon onto
@@ -196,7 +219,7 @@
     const p = clamp(scrollY / Math.max(1, icon.top + scrollY - ti.top));
     move(bigIcon, icon, ti, p, false);
     move(bigName, name, tn, p, true);
-    const fade = clamp((p - 0.85) / 0.15);                         // swap over in the last few pixels
+    const fade = p >= 1 ? 1 : 0;                                   // swap only once it has fully arrived
     bigIcon.style.opacity = bigName.style.opacity = String(1 - fade);
     bar.style.opacity = String(fade);
     if (sub) sub.style.opacity = String(clamp(1 - p * 2));
