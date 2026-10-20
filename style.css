@@ -110,7 +110,6 @@ section.band { background: var(--band); }
 .bar-links .bar-store { background: var(--ink); color: var(--bg); font-weight: 600; margin-left: 6px; padding: 6px 14px; }
 .bar-links .bar-store:hover { background: var(--ink); color: var(--bg); opacity: .85; }
 @media (max-width: 420px) {
-  .bar-links a[href$="privacy/"] { display: none; }   /* still in the footer */
   .bar-links a { padding: 6px 7px; font-size: .84rem; }
   .bar-links .bar-store { padding: 6px 11px; margin-left: 2px; }
 }
@@ -171,9 +170,10 @@ html { scroll-padding-top: 64px; }
 .flip figcaption { margin-top: 10px; font-size: .92rem; color: var(--soft); min-height: 2.9em; }
 .flip[data-state="after"] .cap-before, .flip[data-state="before"] .cap-after { display: none; }
 .flip .credit { margin-top: 4px; }
+.flip-ctl em, .steps h3 em { font-style: italic; }
 /* the bar's icon starts hidden on the home page and appears as the big one shrinks into it */
 .shrinking .bar-brand { opacity: 0; }
-.shrinking .brand img { transform-origin: 0 0; will-change: transform; position: relative; z-index: 11; }
+.shrinking .brand { width: max-content; transform-origin: 0 0; will-change: transform; position: relative; z-index: 11; }
 
 .d-note { fill: var(--red); stroke: var(--bg); stroke-width: 4; }
 .d-note-n { fill: #fff; font: 700 22px -apple-system, BlinkMacSystemFont, sans-serif; }
@@ -227,10 +227,10 @@ html { scroll-padding-top: 64px; }
 .steps p { font-size: .94rem; color: var(--soft); }
 .path { font-weight: 600; color: var(--ink); }
 
-.start { display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: center; }
+.start { display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: center; }
 .deal { background: var(--card); border-radius: 18px; padding: 26px; box-shadow: var(--shadow); border-left: 6px solid var(--green); }
 .launch { display: inline-block; background: var(--orange); color: var(--glyph-ink, #fff); font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; margin-bottom: 10px; }
-.deal-big { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
+.deal-big { font-size: clamp(1.3rem, 5.2vw, 1.7rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
 .deal-family { color: var(--green) !important; font-weight: 600; margin-top: 6px !important; }
 .deal p + p { color: var(--soft); margin-top: 12px; font-size: .95rem; }
 

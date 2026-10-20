@@ -15,7 +15,7 @@
 <nav class="bar" aria-label="Widen">
   <div class="wrap">
     <a class="bar-brand" href="./"><img src="img/apple-touch-icon.png" alt="">Widen</a>
-    <div class="bar-links"><a href="faq/">FAQ</a><a href="support/">Support</a><a href="privacy/">Privacy</a><!-- App Store link once live: set href and drop aria-disabled --><a class="bar-store" href="#app-store" aria-disabled="true">App Store</a></div>
+    <div class="bar-links"><a href="faq/">FAQ</a><a href="support/">Support</a><!-- App Store link once live: set href and drop aria-disabled --><a class="bar-store" href="#app-store" aria-disabled="true">App Store</a></div>
   </div>
 </nav>
 
@@ -44,14 +44,13 @@
         <img class="pic-after" src="img/after.jpg" width="932" height="1356" alt="The same article with Widen: the info box fills the full width and the text runs up to Safari's buttons">
       </div>
       <div class="flip-ctl" role="group" aria-label="Compare">
-        <button type="button" data-show="before">Without Widen</button>
-        <button type="button" data-show="after">With Widen</button>
+        <button type="button" data-show="before">Without <em>Widen</em></button>
+        <button type="button" data-show="after">With <em>Widen</em></button>
       </div>
       <figcaption>
         <span class="cap-before">The page stops short; the band by the buttons is empty.</span>
         <span class="cap-after">The box fills the width; the text runs up to the buttons.</span>
       </figcaption>
-      <p class="credit">Screenshot: Wikipedia, CC BY-SA 4.0</p>
     </figure>
   </div>
 </header>
@@ -80,12 +79,12 @@
     <p class="intro">Simpler extensions for the Duo give you just one on/off switch for every site. <em>Widen</em> gives you three choices, Off, Pictures and Pictures &amp; text, then adds the things you only miss once you&rsquo;ve used them.</p>
     <dl class="extras">
       <div><dt><span class="dot c-red"></span>Nothing hidden behind the buttons</dt><dd>In <strong>Pictures</strong> mode, text runs up to Safari&rsquo;s buttons and stops, so you never have to nudge the page to read the end of a line. <strong>Pictures &amp; text</strong> is there if you want every line full width.</dd></div>
-      <div><dt><span class="dot c-purple"></span>A setting for each site</dt><dd>Leave a site on your usual choice, or set it to <strong>Off</strong>, <strong>Pictures</strong> or <strong>All</strong> (pictures and text). The panel lists every site you&rsquo;ve set, so you can change or remove any of them.</dd></div>
+      <div><dt><span class="dot c-orange"></span>A setting for each site</dt><dd>Leave a site on your usual choice, or set it to <strong>Off</strong>, <strong>Pictures</strong> or <strong>All</strong> (pictures and text). The panel lists every site you&rsquo;ve set, so you can change or remove any of them.</dd></div>
       <div><dt><span class="dot c-navy"></span>Desktop-only sites, if you like</dt><dd>Sites built only for computers are skipped, unless you ask. Turn it on for one, and <em>Widen</em> first shrinks the page to fit, then widens it like any other.</dd></div>
       <div><dt><span class="dot c-teal"></span>Portrait, landscape or both</dt><dd>A selector right under the main choice decides whether <em>Widen</em> works in portrait, in landscape, or in both.</dd></div>
-      <div><dt><span class="dot c-orange"></span>Clear the clutter</dt><dd>A small display and pop-ups don&rsquo;t mix. An optional setting hides the cookie notices and &ldquo;join our mailing list&rdquo; boxes that pin themselves over the page.</dd></div>
+      <div><dt><span class="dot c-purple"></span>Clear the clutter</dt><dd>A small display and pop-ups don&rsquo;t mix. An optional setting hides the cookie notices and &ldquo;join our mailing list&rdquo; boxes that pin themselves over the page.</dd></div>
       <div><dt><span class="dot c-green"></span>Shortcuts and Siri</dt><dd><strong>Set Widen</strong> picks Off, Pictures or Pictures &amp; text; <strong>Toggle Widen</strong> flips between Off and Pictures. Say &ldquo;Toggle Widen&rdquo; to Siri, or use them in automations and on the Action button.</dd></div>
-      <div><dt><span class="dot c-navy"></span>Yours, privately</dt><dd>No account, no subscription, no analytics. Your settings stay on your iPhone.</dd></div>
+      <div><dt><span class="dot c-orange"></span>Yours, privately</dt><dd>No account, no subscription, no analytics. Your settings stay on your iPhone.</dd></div>
     </dl>
   </div>
 </section>
@@ -98,7 +97,7 @@
       <ol class="steps">
         <li><h3>Open the app</h3><p>Tap <strong>Open Safari Settings</strong>. iOS only lets you, not apps, switch on a Safari extension, so this takes you to the right switch.</p></li>
         <li><h3>Allow it</h3><p>Switch <strong>Allow Extension</strong> on, then choose <strong>Allow</strong> under <strong>All Websites</strong>.</p></li>
-        <li><h3>Turn on Widen</h3><p>With the Duo closed, tap the menu button in Safari&rsquo;s address bar, choose <strong>Widen</strong>, then choose <strong>Pictures</strong>.</p></li>
+        <li><h3>Turn on <em>Widen</em></h3><p>With the Duo closed, tap the menu button in Safari&rsquo;s address bar, choose <strong>Widen</strong>, then choose <strong>Pictures</strong>.</p></li>
       </ol>
     </div>
     <div class="deal">
@@ -117,8 +116,9 @@
 
 <footer>
   <div class="wrap">
-    <nav><a href="faq/">FAQ</a><a href="privacy/">Privacy</a><a href="support/">Support</a><a href="mailto:widen@challis.com.au">widen@challis.com.au</a></nav>
+    <nav><a href="faq/">FAQ</a><a href="support/">Support</a><a href="privacy/">Privacy</a></nav>
     <p>&copy; 2026 Challis &amp; Company Pty Limited. Handtuned in Sydney, Australia.</p>
+    <p class="legal">Screenshots: Wikipedia, CC BY-SA 4.0.</p>
     <p class="legal"><em>Widen</em> is an independent app, not affiliated with or endorsed by Apple. It changes only how pages are laid out on your display, on your iPhone, and does not host, copy or send their content. iPhone and Safari are trademarks of Apple Inc.</p>
   </div>
 </footer>
@@ -139,16 +139,19 @@
     b.addEventListener('click', () => { clearInterval(timer); show(b.dataset.show); });
   }
 
-  // The big icon shrinks into the bar's icon as the page scrolls up.
-  const big = document.querySelector('.brand img');
+  // The big title (icon, name and "for iPhone Duo") shrinks into the bar's
+  // icon and name as the page scrolls up; the subtitle fades on the way.
+  const brand = document.querySelector('.brand');
   const small = document.querySelector('.bar-brand');
-  if (!big || !small || still) return;
+  if (!brand || !small || still) return;
+  const bigIcon = brand.querySelector('img'), sub = brand.querySelector('h1 span');
   document.body.classList.add('shrinking');
   let start, end, dist;
   const measure = () => {
-    big.style.transform = '';
-    const a = big.getBoundingClientRect(), b = small.querySelector('img').getBoundingClientRect();
-    start = { x: a.left, y: a.top + scrollY, w: a.width };
+    brand.style.transform = '';
+    const a = bigIcon.getBoundingClientRect(), b = small.querySelector('img').getBoundingClientRect();
+    const box = brand.getBoundingClientRect();
+    start = { x: box.left, y: box.top + scrollY, w: a.width, ix: a.left - box.left, iy: a.top - box.top };
     end = { x: b.left, y: b.top, w: b.width };
     dist = Math.max(1, start.y - end.y);           // scroll needed to bring them level
     update();
@@ -156,10 +159,12 @@
   const update = () => {
     const p = Math.min(1, Math.max(0, scrollY / dist));
     const k = 1 - p * (1 - end.w / start.w);
-    const dx = (end.x - start.x) * p, dy = (end.y - (start.y - scrollY)) * p;
-    big.style.transform = `translate(${dx}px, ${dy}px) scale(${k})`;
-    big.style.opacity = p >= 1 ? '0' : '1';
-    small.style.opacity = String(p);
+    // move so the big icon's corner lands on the small icon's corner
+    const dx = (end.x - (start.x + start.ix * k)) * p, dy = (end.y - (start.y - scrollY + start.iy * k)) * p;
+    brand.style.transform = `translate(${dx}px, ${dy}px) scale(${k})`;
+    brand.style.opacity = p >= 1 ? '0' : '1';
+    if (sub) sub.style.opacity = String(Math.max(0, 1 - p * 2));
+    small.style.opacity = String(p >= 1 ? 1 : p * p);
   };
   addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
   addEventListener('resize', measure);
