@@ -13,9 +13,9 @@
   --bg: #ffffff;
   --band: #f6f6f8;
   --card: #ffffff;
-  --ink: #1a1a2e;
-  --soft: #4d5066;
-  --faint: #8a8ca0;
+  --ink: #1d1d1f;
+  --soft: #515154;
+  --faint: #86868b;
   --rule: #e6e6ee;
   --blue: var(--navy-b);
   --blue-ink: var(--green);
@@ -48,9 +48,9 @@
     --bg: #10101c;
     --band: #181828;
     --card: #1f1f33;
-    --ink: #eeeef6;
-    --soft: #b6b7c9;
-    --faint: #7f8096;
+    --ink: #f5f5f7;
+    --soft: #a1a1a6;
+    --faint: #86868b;
     --rule: #2b2b44;
     --shadow: 0 2px 14px rgba(0, 0, 0, .35);
 
@@ -72,20 +72,25 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* San Francisco on Apple devices (no web fonts, so no third-party requests) */
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.022em;
+  -webkit-font-smoothing: antialiased;
   color: var(--ink);
   background: var(--bg);
-  line-height: 1.6;
 }
+h1, h2, h3, .lede, .deal-big { font-family: -apple-system-headline, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Inter, "Segoe UI", Roboto, Arial, sans-serif; }
 a { color: var(--blue-ink); }
 .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
 .narrow { max-width: 700px; }
-h2 { font-size: 1.75rem; letter-spacing: -0.015em; line-height: 1.25; }
+h2 { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
 .kicker {
-  display: block; font-size: .78rem; font-weight: 700; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--red); margin-bottom: 6px;
+  display: block; font-size: 1.15rem; font-weight: 600; letter-spacing: -0.01em;
+  color: var(--red); margin-bottom: 6px;
 }
-.intro { color: var(--soft); max-width: 640px; margin-top: 10px; }
+.intro { color: var(--soft); max-width: 640px; margin-top: 12px; font-size: 1.1rem; line-height: 1.42; }
 section { padding: 64px 0; }
 section.band { background: var(--band); }
 
@@ -94,9 +99,9 @@ section.band { background: var(--band); }
 .top .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
 .brand { display: flex; align-items: center; gap: 16px; }
 .brand img { width: 76px; height: 76px; border-radius: 18px; box-shadow: 0 8px 24px rgba(20, 26, 46, .25); }
-.brand h1 { font-size: 2.6rem; letter-spacing: -0.03em; line-height: 1; }
+.brand h1 { font-size: 3rem; font-weight: 700; letter-spacing: -0.035em; line-height: 1; }
 .brand span { display: block; font-size: .95rem; color: var(--faint); font-weight: 500; margin-top: 4px; letter-spacing: 0; }
-.lede { font-size: 1.45rem; line-height: 1.35; font-weight: 600; margin-top: 26px; letter-spacing: -0.01em; }
+.lede { font-size: 1.75rem; line-height: 1.18; font-weight: 700; margin-top: 26px; letter-spacing: -0.028em; }
 .lede + p { color: var(--soft); margin-top: 12px; font-size: 1.05rem; }
 .cta { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; }
 .store {
@@ -206,7 +211,7 @@ section.band { background: var(--band); }
 .doc { padding: 40px 0 24px; }
 .doc .back { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-weight: 700; }
 .doc .back img { width: 34px; height: 34px; border-radius: 8px; }
-.doc h1 { font-size: 2.1rem; letter-spacing: -0.02em; margin-top: 30px; }
+.doc h1 { font-size: 2.6rem; font-weight: 700; letter-spacing: -0.035em; margin-top: 30px; }
 .doc .updated { color: var(--faint); font-size: .9rem; margin-top: 4px; }
 .doc h2 { font-size: 1.15rem; margin: 30px 0 6px; letter-spacing: 0; }
 .doc p, .doc li { color: var(--soft); margin-bottom: 10px; }
@@ -233,8 +238,8 @@ footer .legal { max-width: 640px; margin: 10px auto 0; font-size: .78rem; }
   section { padding: 48px 0; }
   .top { padding-top: 36px; }
   .brand h1 { font-size: 2.2rem; }
-  .lede { font-size: 1.25rem; }
-  h2 { font-size: 1.45rem; }
+  .lede { font-size: 1.45rem; }
+  h2 { font-size: 1.85rem; }
   .extras div { grid-template-columns: 1fr; gap: 4px; }
   .shots { gap: 12px; }
   .shots img { border-width: 5px; border-left-width: 4px; border-radius: 4px 20px 20px 4px; }
