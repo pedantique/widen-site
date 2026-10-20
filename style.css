@@ -175,7 +175,7 @@ html { scroll-padding-top: 64px; }
 .dots { display: flex; justify-content: center; gap: 8px; margin-top: 2px; }
 .dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: var(--rule); cursor: pointer; }
 .dots button[aria-selected="true"] { background: var(--navy-b); width: 20px; border-radius: 4px; }
-.flip-ctl { display: inline-grid; grid-template-columns: 1fr 1fr; margin-top: 12px; background: var(--band); border-radius: 999px; padding: 4px; }
+.flip-ctl { display: inline-grid; grid-template-columns: 1fr 1fr; margin: 0 0 12px; background: var(--band); border-radius: 999px; padding: 4px; }
 .flip-ctl button {
   font: inherit; font-size: .9rem; font-weight: 600; color: var(--soft);
   background: none; border: 0; border-radius: 999px; padding: 7px 16px; cursor: pointer;

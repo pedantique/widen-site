@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#10101c" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" href="img/apple-touch-icon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="stylesheet" href="style.css?v=aa00ab6f">
+<link rel="stylesheet" href="style.css?v=f1905036">
 </head>
 <body>
 <nav class="bar" aria-label="Widen">
@@ -39,6 +39,10 @@
     </div>
 
     <figure class="flip" data-state="after">
+      <div class="flip-ctl" role="group" aria-label="Compare">
+        <button type="button" data-show="before">Without <em>Widen</em></button>
+        <button type="button" data-show="after">With <em>Widen</em></button>
+      </div>
       <!-- One .slide per website. Each needs a before and an after image from the
            closed Duo (1398x2034 simulator shots, exported at 932 wide). -->
       <div class="slides" tabindex="0" aria-label="Websites without and with Widen; swipe for more">
@@ -64,10 +68,6 @@
              stayed grey under the strip after switching modes. Retake once the map itself fills the strip. -->
       </div>
       <div class="dots" role="tablist" aria-label="Choose a website"></div>
-      <div class="flip-ctl" role="group" aria-label="Compare">
-        <button type="button" data-show="before">Without <em>Widen</em></button>
-        <button type="button" data-show="after">With <em>Widen</em></button>
-      </div>
     </figure>
   </div>
 </header>
@@ -169,8 +169,10 @@
       d.addEventListener('click', () => { stop(); track.scrollTo({ left: s.offsetLeft - track.offsetLeft, behavior: still ? 'auto' : 'smooth' }); });
       dots.append(d);
     });
+    let current = 0;
     const mark = () => {
       const i = Math.round(track.scrollLeft / track.clientWidth);
+      if (i !== current) { current = i; show('after'); }      // each site opens With Widen
       [...dots.children].forEach((d, j) => d.setAttribute('aria-selected', String(i === j)));
     };
     track.addEventListener('scroll', () => requestAnimationFrame(mark), { passive: true });
@@ -179,17 +181,19 @@
   } else {
     dots.hidden = true;
   }
-  // On its own: without, with, then on to the next site.
+  // On its own: each site shows With Widen, then Without, then With again,
+  // then the next site (starting With Widen).
   if (!still) {
-    let i = 0;
+    let flips = 0;
     timer = setInterval(() => {
-      if (fig.dataset.state === 'before') return show('after');
+      if (flips < 2) { flips++; return show(fig.dataset.state === 'after' ? 'before' : 'after'); }
+      flips = 0;
       if (slides.length > 1) {
-        i = (Math.round(track.scrollLeft / track.clientWidth) + 1) % slides.length;
+        const i = (Math.round(track.scrollLeft / track.clientWidth) + 1) % slides.length;
         track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: 'smooth' });
       }
-      show('before');
-    }, 2800);
+      show('after');
+    }, 2600);
   }
 
   // The big title shrinks into the bar as the page scrolls up: the icon onto
