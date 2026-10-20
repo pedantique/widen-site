@@ -14,7 +14,7 @@ def duo(wide, label, uid, notes=False):
     strip = X + 382                          # Safari's controls start here
     m = 18                                   # page margin
     right = edge - m if wide else edge - 14   # pictures reach here
-    text_right = strip - 14                    # words never go under the buttons
+    text_right = strip + 4 if wide else strip - 14   # words run up to the buttons, never under them
     out = []
     a = out.append
     a(f'<svg class="duo" viewBox="0 0 518 730" role="img" aria-label="{label}">')
@@ -26,18 +26,18 @@ def duo(wide, label, uid, notes=False):
     if not wide:
         a(f'<rect class="d-gutter" x="{strip}" y="{Y}" width="{W-382}" height="{H}"/>')
     # the page
-    a(f'<rect class="d-photo" x="{X+m}" y="{Y+84}" width="{right-X-m}" height="176" rx="10"/>')
+    a(f'<rect class="d-photo" x="{X+m}" y="{Y+84}" width="{right-X-m}" height="216" rx="10"/>')
     sx = X + m + (right - X - m) * 0.72
     a(f'<circle class="d-sun" cx="{sx:.0f}" cy="{Y+134}" r="22"/>')
-    a(f'<path class="d-hill" d="M{X+m} {Y+260}V{Y+214}q70-62 150-14t130 6q{(right-X-m-280)/2:.0f}-30 {right-X-m-280:.0f}-8V{Y+260}z"/>')
-    a(f'<rect class="d-ink" x="{X+m}" y="{Y+282}" width="{text_right-X-m}" height="16" rx="5"/>')
-    a(f'<rect class="d-ink" x="{X+m}" y="{Y+306}" width="{(text_right-X-m)*0.62:.0f}" height="16" rx="5"/>')
-    y = Y + 346
-    for i in range(9):
-        short = i in (5, 8)
+    a(f'<path class="d-hill" d="M{X+m} {Y+300}V{Y+244}q70-62 150-14t130 6q{(right-X-m-280)/2:.0f}-30 {right-X-m-280:.0f}-8V{Y+300}z"/>')
+    a(f'<rect class="d-ink" x="{X+m}" y="{Y+322}" width="{text_right-X-m}" height="16" rx="5"/>')
+    a(f'<rect class="d-ink" x="{X+m}" y="{Y+346}" width="{(text_right-X-m)*0.62:.0f}" height="16" rx="5"/>')
+    y = Y + 386
+    for i in range(7):
+        short = i in (4, 6)
         w = (text_right - X - m) * (0.55 if short else 1)
         a(f'<rect class="d-text" x="{X+m}" y="{y}" width="{w:.0f}" height="7" rx="3.5"/>')
-        y += 20 if i != 5 else 34
+        y += 20 if i != 4 else 34
     a(f'<rect class="d-photo" x="{X+m}" y="{y+6}" width="{right-X-m}" height="170" rx="10"/>')
     # the site's fixed header: always ends at the strip, clear of the camera
     a(f'<rect class="d-bar" x="{X}" y="{Y}" width="{strip-X}" height="64"/>')
@@ -48,8 +48,9 @@ def duo(wide, label, uid, notes=False):
     a(f'<rect class="d-strip" x="{strip+10}" y="{Y+12}" width="{W-382-20}" height="{H-24}" rx="32"/>')
     a(f'<circle class="d-cam" cx="{strip+42}" cy="{Y+46}" r="17"/>')
     a(f'<circle class="d-lens" cx="{strip+42}" cy="{Y+46}" r="5"/>')
-    for cy in (Y+300, Y+360, Y+606):
-        a(f'<rect class="d-btn" x="{strip+30}" y="{cy}" width="24" height="24" rx="8"/>')
+    # where Safari really puts them: back and bookmarks high up, new tab and tabs at the foot
+    for cy in (Y+217, Y+278, Y+566, Y+620):
+        a(f'<circle class="d-btn" cx="{strip+42}" cy="{cy}" r="14"/>')
     a('</g>')
     if notes:  # numbered markers for the legend beside the picture
         for n, (cx, cy) in enumerate(((strip + 30, Y + 140), (strip - 12, Y + 64), (X + m + 40, Y + 560)), 1):

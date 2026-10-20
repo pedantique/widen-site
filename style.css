@@ -125,19 +125,10 @@ section.band { background: var(--band); }
 .d-lens { fill: #1d2a4d; }
 .d-btn { fill: var(--d-btn); opacity: .8; }
 
-/* ---------- Comparison ---------- */
-.flip { max-width: 360px; margin: 0 auto; text-align: center; }
-.flip-pics { display: grid; }
-.flip-pics > div { grid-area: 1 / 1; transition: opacity .5s ease; }
-.flip[data-state="after"] .pic-before, .flip[data-state="before"] .pic-after { opacity: 0; }
-.flip-ctl { display: inline-flex; margin-top: 16px; background: var(--band); border-radius: 999px; padding: 4px; }
-.flip-ctl button {
-  font: inherit; font-size: .9rem; font-weight: 600; color: var(--soft);
-  background: none; border: 0; border-radius: 999px; padding: 7px 16px; cursor: pointer;
-}
-.flip-ctl button[aria-pressed="true"] { background: var(--navy-b); color: var(--glyph-ink, #fff); }
-.flip figcaption { margin-top: 10px; font-size: .92rem; color: var(--soft); min-height: 2.9em; }
-.flip[data-state="after"] .cap-before, .flip[data-state="before"] .cap-after { display: none; }
+/* ---------- Hero screenshots ---------- */
+.hero-shots .shots { margin-top: 0; gap: 16px; }
+.hero-shots .credit { margin-top: 12px; }
+
 .d-note { fill: var(--red); stroke: var(--bg); stroke-width: 4; }
 .d-note-n { fill: #fff; font: 700 22px -apple-system, BlinkMacSystemFont, sans-serif; }
 
@@ -196,6 +187,10 @@ section.band { background: var(--band); }
 .deal-big { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
 .deal p + p { color: var(--soft); margin-top: 12px; font-size: .95rem; }
 
+.more { padding: 36px 0; text-align: center; }
+.more p { color: var(--soft); display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 18px; }
+.button { display: inline-block; background: var(--navy-b); color: var(--glyph-ink, #fff); text-decoration: none; font-weight: 600; padding: 10px 20px; border-radius: 999px; }
+
 /* ---------- FAQ ---------- */
 .faq { margin-top: 26px; }
 .faq details { border-bottom: 1px solid var(--rule); }
@@ -216,6 +211,8 @@ section.band { background: var(--band); }
 .doc h2 { font-size: 1.15rem; margin: 30px 0 6px; letter-spacing: 0; }
 .doc p, .doc li { color: var(--soft); margin-bottom: 10px; }
 .doc ul { padding-left: 22px; }
+.doc .faq { margin-top: 6px; }
+.doc .faq details p { margin: 0; }
 .doc strong { color: var(--ink); }
 .summary { background: var(--band); border-radius: 14px; padding: 18px 20px; margin-top: 24px; }
 .summary p { margin: 0; color: var(--ink); }
@@ -239,7 +236,6 @@ footer .legal { max-width: 640px; margin: 10px auto 0; font-size: .78rem; }
   .lede { font-size: 1.25rem; }
   h2 { font-size: 1.45rem; }
   .extras div { grid-template-columns: 1fr; gap: 4px; }
-  .flip { max-width: 300px; }
   .shots { gap: 12px; }
   .shots img { border-width: 5px; border-left-width: 4px; border-radius: 4px 20px 20px 4px; }
 }
