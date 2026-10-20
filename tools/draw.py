@@ -13,7 +13,8 @@ def duo(wide, label, uid, notes=False):
     edge = X + (W if wide else 382)          # where the page's layout ends
     strip = X + 382                          # Safari's controls start here
     m = 18                                   # page margin
-    right = edge - m if wide else edge - 14
+    right = edge - m if wide else edge - 14   # pictures reach here
+    text_right = strip - 14                    # words never go under the buttons
     out = []
     a = out.append
     a(f'<svg class="duo" viewBox="0 0 518 730" role="img" aria-label="{label}">')
@@ -29,14 +30,15 @@ def duo(wide, label, uid, notes=False):
     sx = X + m + (right - X - m) * 0.72
     a(f'<circle class="d-sun" cx="{sx:.0f}" cy="{Y+134}" r="22"/>')
     a(f'<path class="d-hill" d="M{X+m} {Y+260}V{Y+214}q70-62 150-14t130 6q{(right-X-m-280)/2:.0f}-30 {right-X-m-280:.0f}-8V{Y+260}z"/>')
-    a(f'<rect class="d-ink" x="{X+m}" y="{Y+282}" width="{right-X-m}" height="16" rx="5"/>')
-    a(f'<rect class="d-ink" x="{X+m}" y="{Y+306}" width="{(right-X-m)*0.62:.0f}" height="16" rx="5"/>')
+    a(f'<rect class="d-ink" x="{X+m}" y="{Y+282}" width="{text_right-X-m}" height="16" rx="5"/>')
+    a(f'<rect class="d-ink" x="{X+m}" y="{Y+306}" width="{(text_right-X-m)*0.62:.0f}" height="16" rx="5"/>')
     y = Y + 346
-    for i in range(14):
-        short = i in (5, 13)
-        w = (right - X - m) * (0.55 if short else 1)
+    for i in range(9):
+        short = i in (5, 8)
+        w = (text_right - X - m) * (0.55 if short else 1)
         a(f'<rect class="d-text" x="{X+m}" y="{y}" width="{w:.0f}" height="7" rx="3.5"/>')
         y += 20 if i != 5 else 34
+    a(f'<rect class="d-photo" x="{X+m}" y="{y+6}" width="{right-X-m}" height="170" rx="10"/>')
     # the site's fixed header: always ends at the strip, clear of the camera
     a(f'<rect class="d-bar" x="{X}" y="{Y}" width="{strip-X}" height="64"/>')
     a(f'<rect class="d-logo" x="{X+m}" y="{Y+24}" width="96" height="16" rx="4"/>')
@@ -50,7 +52,7 @@ def duo(wide, label, uid, notes=False):
         a(f'<rect class="d-btn" x="{strip+30}" y="{cy}" width="24" height="24" rx="8"/>')
     a('</g>')
     if notes:  # numbered markers for the legend beside the picture
-        for n, (cx, cy) in enumerate(((strip + 42, Y + 470), (strip - 12, Y + 64), (X + m + 40, Y + 560)), 1):
+        for n, (cx, cy) in enumerate(((strip + 30, Y + 140), (strip - 12, Y + 64), (X + m + 40, Y + 560)), 1):
             a(f'<circle class="d-note" cx="{cx}" cy="{cy}" r="19"/>')
             a(f'<text class="d-note-n" x="{cx}" y="{cy + 7}" text-anchor="middle">{n}</text>')
     a('</svg>')
@@ -60,7 +62,7 @@ page = pathlib.Path(__file__).resolve().parent.parent / 'index.html'
 html = page.read_text()
 PICS = {
     'before': (False, 'Without Widen: the page stops where Safari’s buttons begin, leaving an empty band down the side', False),
-    'after': (True, 'With Widen: text and pictures run to the edge of the display, under the buttons', False),
+    'after': (True, 'With Widen: pictures run to the edge of the display, behind the see-through buttons, while the text stops short of them', False),
     'notes': (True, 'Widen at work, with three numbered points explained beside the picture', True),
 }
 for key, (wide, label, notes) in PICS.items():
