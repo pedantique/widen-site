@@ -2,27 +2,35 @@
    reader's system setting. */
 :root {
   color-scheme: light dark;
+  /* Puzzlement's brand colours, shared across Challis apps */
+  --red: #700000;
+  --green: #037036;
+  --navy-b: #191970;
+  --purple: #580470;
+  --orange: #e07e1b;
+  --teal: #065570;
+
   --bg: #ffffff;
-  --band: #f3f5fa;
+  --band: #f6f6f8;
   --card: #ffffff;
-  --ink: #141a2e;
-  --soft: #4f5670;
-  --faint: #8a90a6;
-  --rule: #e3e6ef;
-  --blue: #2f6fe8;
-  --blue-ink: #1f56c3;
-  --navy: #1c2550;
+  --ink: #1a1a2e;
+  --soft: #4d5066;
+  --faint: #8a8ca0;
+  --rule: #e6e6ee;
+  --blue: var(--navy-b);
+  --blue-ink: var(--green);
+  --navy: var(--navy-b);
   --shadow: 0 2px 12px rgba(20, 26, 46, .08);
 
   /* the Duo pictures */
   --d-body: #1b1d24;
   --d-screen: #ffffff;
   --d-gutter: #eceef3;
-  --d-bar: #2f6fe8;
+  --d-bar: #191970;
   --d-logo: #ffffff;
-  --d-photo: #9cc3f5;
-  --d-sun: #ffd166;
-  --d-hill: #3f9a6b;
+  --d-photo: #b9cfe0;
+  --d-sun: #e07e1b;
+  --d-hill: #037036;
   --d-ink: #2a2f40;
   --d-text: #b9bdc9;
   --d-strip: rgba(214, 218, 228, .5);
@@ -30,25 +38,30 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0d1020;
-    --band: #141932;
-    --card: #1a2040;
-    --ink: #eef0f7;
-    --soft: #b4b9cc;
-    --faint: #7d839b;
-    --rule: #272e52;
-    --blue: #5b93ff;
-    --blue-ink: #8ab2ff;
-    --navy: #c9d4ff;
+    --red: #f24d40;
+    --green: #3cc27a;
+    --navy-b: #8c9eff;
+    --purple: #c27af2;
+    --orange: #f0a050;
+    --teal: #4fb3d4;
+
+    --bg: #10101c;
+    --band: #181828;
+    --card: #1f1f33;
+    --ink: #eeeef6;
+    --soft: #b6b7c9;
+    --faint: #7f8096;
+    --rule: #2b2b44;
     --shadow: 0 2px 14px rgba(0, 0, 0, .35);
 
+    --glyph-ink: #10101c;
     --d-body: #000000;
     --d-screen: #1c1c1e;
     --d-gutter: #0a0a0b;
-    --d-bar: #2c5fcf;
-    --d-photo: #2f4f7f;
-    --d-sun: #e2b04a;
-    --d-hill: #2f7553;
+    --d-bar: #2a2a8c;
+    --d-photo: #2c4258;
+    --d-sun: #e07e1b;
+    --d-hill: #037036;
     --d-ink: #e5e5ea;
     --d-text: #55565c;
     --d-strip: rgba(120, 122, 132, .34);
@@ -70,7 +83,7 @@ a { color: var(--blue-ink); }
 h2 { font-size: 1.75rem; letter-spacing: -0.015em; line-height: 1.25; }
 .kicker {
   display: block; font-size: .78rem; font-weight: 700; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--blue); margin-bottom: 6px;
+  text-transform: uppercase; color: var(--red); margin-bottom: 6px;
 }
 .intro { color: var(--soft); max-width: 640px; margin-top: 10px; }
 section { padding: 64px 0; }
@@ -119,13 +132,15 @@ section.band { background: var(--band); }
 
 /* ---------- Cards ---------- */
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 32px; }
-.card { background: var(--card); border-radius: 16px; padding: 22px; box-shadow: var(--shadow); }
+.card { background: var(--card); border-radius: 16px; padding: 22px; box-shadow: var(--shadow); border-top: 4px solid var(--accent, var(--navy-b)); }
+.c-red { --accent: var(--red); } .c-green { --accent: var(--green); } .c-navy { --accent: var(--navy-b); }
+.c-purple { --accent: var(--purple); } .c-orange { --accent: var(--orange); } .c-teal { --accent: var(--teal); }
 .card h3 { font-size: 1.05rem; margin-bottom: 6px; line-height: 1.3; }
 .card p { font-size: .94rem; color: var(--soft); }
 .glyph {
   width: 38px; height: 38px; border-radius: 10px; margin-bottom: 14px;
   display: flex; align-items: center; justify-content: center;
-  background: color-mix(in srgb, var(--blue) 14%, transparent); color: var(--blue);
+  background: var(--accent, var(--navy-b)); color: var(--glyph-ink, #fff);
 }
 .glyph svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
@@ -141,9 +156,11 @@ section.band { background: var(--band); }
 .steps li::before {
   content: counter(s); position: absolute; top: 0; left: 0;
   width: 36px; height: 36px; border-radius: 50%;
-  background: var(--blue); color: #fff; font-weight: 700;
+  background: var(--step, var(--navy-b)); color: var(--glyph-ink, #fff); font-weight: 700;
   display: flex; align-items: center; justify-content: center;
 }
+.steps li:nth-child(1) { --step: var(--purple); } .steps li:nth-child(2) { --step: var(--navy-b); }
+.steps li:nth-child(3) { --step: var(--teal); } .steps li:nth-child(4) { --step: var(--green); }
 .steps h3 { font-size: 1.02rem; margin-bottom: 4px; }
 .steps p { font-size: .94rem; color: var(--soft); }
 .path { font-weight: 600; color: var(--ink); }
@@ -156,7 +173,7 @@ section.band { background: var(--band); }
 .ticket .amt small { font-size: 1rem; font-weight: 600; color: var(--faint); letter-spacing: 0; }
 .ticket ul { list-style: none; margin-top: 16px; }
 .ticket li { padding: 7px 0 7px 26px; position: relative; font-size: .95rem; border-top: 1px solid var(--rule); }
-.ticket li::before { content: ""; position: absolute; left: 4px; top: 14px; width: 10px; height: 6px; border: solid var(--blue); border-width: 0 0 2px 2px; transform: rotate(-45deg); }
+.ticket li::before { content: ""; position: absolute; left: 4px; top: 14px; width: 10px; height: 6px; border: solid var(--green); border-width: 0 0 2px 2px; transform: rotate(-45deg); }
 .ticket .fine { font-size: .8rem; color: var(--faint); margin-top: 12px; }
 
 /* ---------- FAQ ---------- */
@@ -166,7 +183,7 @@ section.band { background: var(--band); }
   cursor: pointer; list-style: none; padding: 16px 32px 16px 0; font-weight: 600; position: relative;
 }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; position: absolute; right: 4px; top: 12px; font-size: 1.4rem; font-weight: 400; color: var(--blue); }
+.faq summary::after { content: "+"; position: absolute; right: 4px; top: 12px; font-size: 1.4rem; font-weight: 400; color: var(--green); }
 .faq details[open] summary::after { content: "−"; }
 .faq details p { color: var(--soft); padding: 0 0 16px; }
 
