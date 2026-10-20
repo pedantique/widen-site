@@ -8,7 +8,7 @@ Geometry is the real one at 1 unit = 1 pt: a 466 x 678 display with Safari's
 84 pt control strip on the right; without Widen the page stops at 382."""
 import pathlib, re
 
-def duo(wide, label):
+def duo(wide, label, uid, notes=False):
     X, Y, W, H = 26, 26, 466, 678           # the display
     edge = X + (W if wide else 382)          # where the page's layout ends
     strip = X + 382                          # Safari's controls start here
@@ -17,10 +17,10 @@ def duo(wide, label):
     out = []
     a = out.append
     a(f'<svg class="duo" viewBox="0 0 518 730" role="img" aria-label="{label}">')
-    a(f'<defs><clipPath id="scr-{int(wide)}"><path d="M{X} {Y}h{W-44}a44 44 0 0 1 44 44v{H-88}a44 44 0 0 1-44 44h-{W-44}z"/></clipPath></defs>')
+    a(f'<defs><clipPath id="scr-{uid}"><path d="M{X} {Y}h{W-44}a44 44 0 0 1 44 44v{H-88}a44 44 0 0 1-44 44h-{W-44}z"/></clipPath></defs>')
     # body: the hinge side is square, the free side rounded
     a(f'<path class="d-body" d="M8 4h444a62 62 0 0 1 62 62v598a62 62 0 0 1-62 62h-444a6 6 0 0 1-6-6v-710a6 6 0 0 1 6-6z"/>')
-    a(f'<g clip-path="url(#scr-{int(wide)})">')
+    a(f'<g clip-path="url(#scr-{uid})">')
     a(f'<rect class="d-screen" x="{X}" y="{Y}" width="{W}" height="{H}"/>')
     if not wide:
         a(f'<rect class="d-gutter" x="{strip}" y="{Y}" width="{W-382}" height="{H}"/>')
@@ -48,13 +48,22 @@ def duo(wide, label):
     a(f'<circle class="d-lens" cx="{strip+42}" cy="{Y+46}" r="5"/>')
     for cy in (Y+300, Y+360, Y+606):
         a(f'<rect class="d-btn" x="{strip+30}" y="{cy}" width="24" height="24" rx="8"/>')
-    a('</g></svg>')
+    a('</g>')
+    if notes:  # numbered markers for the legend beside the picture
+        for n, (cx, cy) in enumerate(((strip + 42, Y + 470), (strip - 12, Y + 64), (X + m + 40, Y + 560)), 1):
+            a(f'<circle class="d-note" cx="{cx}" cy="{cy}" r="19"/>')
+            a(f'<text class="d-note-n" x="{cx}" y="{cy + 7}" text-anchor="middle">{n}</text>')
+    a('</svg>')
     return ''.join(out)
 
 page = pathlib.Path(__file__).resolve().parent.parent / 'index.html'
 html = page.read_text()
-for key, wide, label in (('before', False, 'Without Widen: the page stops at the edge of Safari’s controls, leaving a blank band down the side'),
-                         ('after', True, 'With Widen: text and pictures run the full width of the display, under the controls; the site’s header still stops short of the camera')):
+PICS = {
+    'before': (False, 'Without Widen: the page stops where Safari’s buttons begin, leaving an empty band down the side', False),
+    'after': (True, 'With Widen: text and pictures run to the edge of the display, under the buttons', False),
+    'notes': (True, 'Widen at work, with three numbered points explained beside the picture', True),
+}
+for key, (wide, label, notes) in PICS.items():
     html = re.sub(rf'<!-- duo:{key} -->.*?<!-- /duo:{key} -->',
-                  f'<!-- duo:{key} -->{duo(wide, label)}<!-- /duo:{key} -->', html, flags=re.S)
+                  lambda _: f'<!-- duo:{key} -->{duo(wide, label, key, notes)}<!-- /duo:{key} -->', html, flags=re.S)
 page.write_text(html)
