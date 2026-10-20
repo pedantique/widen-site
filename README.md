@@ -1,7 +1,7 @@
 # Widen website
 
 Static site for **Widen for iPhone Duo** (landing page, privacy policy, support),
-served by GitHub Pages from `main` at <https://pedantique.github.io/widen-site/>.
+served by GitHub Pages from `main` at <https://widen.challis.com.au/> (CNAME; also reachable via pedantique.github.io/widen-site).
 
 - `index.html`: landing page. The App Store button is a placeholder (`id="app-store"`):
   set its `href` and remove `aria-disabled` once the app is live.
@@ -17,7 +17,7 @@ served by GitHub Pages from `main` at <https://pedantique.github.io/widen-site/>
 All links are relative, so the site works both at the github.io project path and on a custom domain.
 
 <!--
-Custom domain (planned: widen.challis.com.au)
+Custom domain: widen.challis.com.au is live (set up 21 October 2026). Steps, for reference
 
 1. DNS (GoDaddy, challis.com.au): add a CNAME record
        widen  ->  pedantique.github.io
@@ -31,3 +31,5 @@ Custom domain (planned: widen.challis.com.au)
        gh api -X PUT repos/pedantique/widen-site/pages -F https_enforced=true
 4. Update the App Store Connect privacy and support URLs to the new address.
 -->
+
+Wording: say "outer display" and "inner display" (Apple's and Wikipedia's terms), not "outer screen" or "cover screen".
