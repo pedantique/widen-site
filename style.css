@@ -248,6 +248,15 @@ html { scroll-padding-top: 64px; }
 .panels figcaption { text-align: center; font-size: .9rem; color: var(--soft); margin-top: 4px; }
 .panels figcaption b { display: block; color: var(--ink); }
 @media (max-width: 560px) { .panels { gap: 10px; } .panels figcaption { font-size: .82rem; } }
+.guide { list-style: none; counter-reset: g; margin-top: 30px; }
+.guide > li { counter-increment: g; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 28px; align-items: start; padding: 30px 0; border-top: 1px solid var(--rule); }
+.guide .where { display: block; font-weight: 700; color: var(--red); }
+.guide .where::before { content: counter(g); width: 26px; height: 26px; border-radius: 50%; background: var(--red); color: #fff; font-size: .85rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px; vertical-align: 1px; }
+.guide h2 { margin: 6px 0 8px; }
+.guide .howto { margin-top: 0; }
+.guide .shot { max-width: 260px; }
+.guide .shot img { display: block; width: 100%; height: auto; }
+@media (max-width: 760px) { .guide > li { grid-template-columns: minmax(0, 1fr); gap: 16px; } }
 .howto { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; max-width: 420px; }
 .howto img { display: block; width: 100%; height: auto; }
 .howto figcaption { text-align: center; font-size: .85rem; color: var(--soft); margin-top: 2px; }
