@@ -20,7 +20,7 @@ def duo(wide, label, uid, notes=False):
     a(f'<svg class="duo" viewBox="0 0 612 795" role="img" aria-label="{label}">')
     # the iPhone Duo simulator's own frame, and its display's exact corner shape
     a(f'<defs><mask id="scr-{uid}"><image href="img/duo-screen-mask.png" x="{X}" y="{Y}" width="{W}" height="{H}"/></mask></defs>')
-    a('<image href="img/duo-frame.webp" x="0" y="0" width="612" height="795"/>')
+    a('<image href="img/duo-frame.webp?v=3" x="0" y="0" width="612" height="795"/>')
     a(f'<g mask="url(#scr-{uid})">')
     a(f'<rect class="d-screen" x="{X}" y="{Y}" width="{W}" height="{H}"/>')
     if not wide:
