@@ -223,8 +223,10 @@ html { scroll-padding-top: 64px; }
 .extras div { display: grid; grid-template-columns: 220px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
 .extras dt { font-weight: 700; display: flex; gap: 10px; align-items: flex-start; }
 .soon { font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--orange); border: 1px solid currentColor; border-radius: 999px; padding: 1px 7px; margin-left: 4px; white-space: nowrap; }
-.dot { flex: none; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); position: relative; transform: translateY(3px); }
-.dot::after { content: ""; position: absolute; left: 6px; top: 4.5px; width: 5px; height: 9px; border: solid var(--glyph-ink, #fff); border-width: 0 2.2px 2.2px 0; transform: rotate(45deg); }
+.dot { flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); position: relative; transform: translateY(2px); }
+.dot::after { content: ""; position: absolute; inset: 0; background: var(--glyph-ink, #fff);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.5 12.5l3.5 3.5 7.5-8' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 22px no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.5 12.5l3.5 3.5 7.5-8' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 22px no-repeat; }
 .c-red { --accent: var(--red); } .c-green { --accent: var(--green); } .c-navy { --accent: var(--navy-b); }
 .c-purple { --accent: var(--purple); } .c-orange { --accent: var(--orange); } .c-teal { --accent: var(--teal); }
 .extras dd { color: var(--soft); }
@@ -244,6 +246,9 @@ html { scroll-padding-top: 64px; }
 .steps p { font-size: .94rem; color: var(--soft); }
 .path { font-weight: 600; color: var(--ink); }
 
+.panel-one { max-width: 320px; margin: 28px auto 0; text-align: center; }
+.panel-one img { display: block; width: 100%; height: auto; }
+.panel-one figcaption { font-size: .9rem; color: var(--soft); margin-top: 4px; }
 .panels { display: grid; grid-template-columns: repeat(2, minmax(0, 300px)); justify-content: center; gap: 24px; margin-top: 28px; }
 .panels img { display: block; width: 100%; height: auto; }
 .panels figcaption { text-align: center; font-size: .9rem; color: var(--soft); margin-top: 4px; }
@@ -255,14 +260,15 @@ html { scroll-padding-top: 64px; }
 .guide .where::before { content: counter(g); width: 26px; height: 26px; border-radius: 50%; background: var(--red); color: #fff; font-size: .85rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px; vertical-align: 1px; }
 .guide h2 { margin: 6px 0 8px; }
 .guide .howto { margin-top: 0; }
-.guide .shot { max-width: 260px; }
+.guide .shot { max-width: 260px; text-align: center; }
+.guide .shot figcaption, .guide .howto figcaption { font-size: .85rem; color: var(--soft); margin-top: 2px; }
 .guide .shot img { display: block; width: 100%; height: auto; }
 @media (max-width: 760px) { .guide > li { grid-template-columns: minmax(0, 1fr); gap: 16px; } }
 .howto { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; max-width: 420px; }
 .howto img { display: block; width: 100%; height: auto; }
 .howto figcaption { text-align: center; font-size: .85rem; color: var(--soft); margin-top: 2px; }
 .start { display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: center; }
-.deal { background: var(--card); border-radius: 18px; padding: 26px; box-shadow: var(--shadow); border-left: 6px solid var(--green); }
+.deal { background: var(--band); border-radius: 18px; padding: 26px; }
 .launch { display: inline-block; background: var(--orange); color: var(--glyph-ink, #fff); font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; margin-bottom: 10px; }
 .deal-big { font-size: clamp(1.3rem, 5.2vw, 1.7rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
 .deal-family { color: var(--green) !important; font-weight: 600; margin-top: 6px !important; }
