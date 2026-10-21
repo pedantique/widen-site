@@ -48,4 +48,6 @@ edit('privacy/index.html', [
  (r'Apple&rsquo;s own privacy policy covers them\.', 'Apple&rsquo;s own privacy policy covers it.'),
  (r'Last updated [0-9]+ [A-Za-z]+ 2026', 'Last updated ON_RELEASE'),
 ])
+edit('index.html', [(r' <span class="soon">Next update</span>', '')])
+edit('faq/index.html', [(r'<p>From the next update, yes\. In Control Center', '<p>Yes. In Control Center')])
 print('1.0.1 wording applied. Set the privacy page date (ON_RELEASE), check, commit and push.')

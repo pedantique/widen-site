@@ -222,6 +222,7 @@ html { scroll-padding-top: 64px; }
 .extras { margin-top: 30px; display: grid; gap: 0; border-top: 1px solid var(--rule); }
 .extras div { display: grid; grid-template-columns: 220px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
 .extras dt { font-weight: 700; display: flex; gap: 10px; align-items: baseline; }
+.soon { font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--orange); border: 1px solid currentColor; border-radius: 999px; padding: 1px 7px; margin-left: 4px; white-space: nowrap; }
 .dot { flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); transform: translateY(-1px); }
 .c-red { --accent: var(--red); } .c-green { --accent: var(--green); } .c-navy { --accent: var(--navy-b); }
 .c-purple { --accent: var(--purple); } .c-orange { --accent: var(--orange); } .c-teal { --accent: var(--teal); }
