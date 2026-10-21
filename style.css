@@ -243,6 +243,11 @@ html { scroll-padding-top: 64px; }
 .steps p { font-size: .94rem; color: var(--soft); }
 .path { font-weight: 600; color: var(--ink); }
 
+.panels { display: grid; grid-template-columns: repeat(2, minmax(0, 300px)); justify-content: center; gap: 24px; margin-top: 28px; }
+.panels img { display: block; width: 100%; height: auto; }
+.panels figcaption { text-align: center; font-size: .9rem; color: var(--soft); margin-top: 4px; }
+.panels figcaption b { display: block; color: var(--ink); }
+@media (max-width: 560px) { .panels { gap: 10px; } .panels figcaption { font-size: .82rem; } }
 .howto { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; max-width: 420px; }
 .howto img { display: block; width: 100%; height: auto; }
 .howto figcaption { text-align: center; font-size: .85rem; color: var(--soft); margin-top: 2px; }
