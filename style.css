@@ -117,7 +117,7 @@ section.band { background: var(--band); }
 /* ---------- Top ---------- */
 .top { padding: 40px 0 28px; }
 html { scroll-padding-top: 64px; }
-.top .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+.top .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
 .brand { display: flex; align-items: center; gap: 16px; }
 .brand img { width: 76px; height: 76px; border-radius: 18px; box-shadow: 0 8px 24px rgba(20, 26, 46, .25); }
 .brand h1 { font-size: 3rem; font-weight: 700; letter-spacing: -0.035em; line-height: 1; }
@@ -156,20 +156,19 @@ html { scroll-padding-top: 64px; }
 .d-btn { fill: var(--d-btn); opacity: .8; }
 
 /* ---------- Before / after ---------- */
-.flip { max-width: 350px; margin: 0 auto; text-align: center; }
+.flip { max-width: 390px; min-width: 0; width: 100%; margin: 0 auto; text-align: center; }
 .slides {
   display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
   -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
 }
 .slides::-webkit-scrollbar { display: none; }
 .slides:focus-visible { outline: 2px solid var(--navy-b); outline-offset: 4px; border-radius: 12px; }
-.slide { flex: 0 0 100%; scroll-snap-align: center; padding: 4px 8px 18px; box-sizing: border-box; }
+.slide { flex: 0 0 100%; scroll-snap-align: center; padding: 0 0 18px; box-sizing: border-box; }
 /* Screenshots are framed in the iPhone Duo simulator's own device artwork
    (img/*.webp), so the page only stacks them. */
 .flip-pics { display: grid; }
 .flip-pics img {
   grid-area: 1 / 1; display: block; width: 100%; height: auto;
-  filter: drop-shadow(0 12px 22px rgba(20, 26, 46, .22));
   transition: opacity .45s ease;
 }
 .flip[data-state="after"] .pic-before, .flip[data-state="before"] .pic-after { opacity: 0; }
@@ -288,7 +287,7 @@ footer .legal { max-width: 640px; margin: 10px auto 0; font-size: .78rem; }
 
 /* ---------- Narrow screens ---------- */
 @media (max-width: 880px) {
-  .top .wrap { grid-template-columns: 1fr; }
+  .top .wrap { grid-template-columns: minmax(0, 1fr); }
   .closer, .start { grid-template-columns: 1fr; }
   .closer-pic { max-width: 300px; margin: 0 auto; }
 }

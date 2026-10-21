@@ -14,7 +14,7 @@ def edit(f, pairs):
     p.write_text(t)
 
 edit('index.html', [
- (r'\s*<li><h3>Start your free week</h3>.*?</li>', ''),
+ (r' Back in the <em>Widen</em> app, start your free week; a tick shows against each step once it&rsquo;s done\.', ''),
  (r'<p class="deal-big">.*?</p>\n(\s*)<p>.*?</p>',
   '<p class="deal-big">Free for 7 days.<br>Then US$3.99 for lifetime access.</p>\n'
   '      <p>Nothing to start: just browse. Your free week begins the first time <em>Widen</em> widens a page, '
