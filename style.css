@@ -125,7 +125,7 @@ html { scroll-padding-top: 64px; }
 .brand .sub { display: block; text-align: center; font-size: .95rem; color: var(--faint); font-weight: 500; margin-top: 4px; letter-spacing: 0; }
 .lede { font-size: 1.75rem; line-height: 1.18; font-weight: 700; margin-top: 26px; letter-spacing: -0.028em; }
 .lede-2 { display: block; margin-top: .35em; }
-.lede + p { color: var(--soft); margin-top: 12px; font-size: 1.05rem; }
+.lede ~ p:not(.cta) { color: var(--soft); margin-top: 12px; font-size: 1.05rem; }
 .cta { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; }
 .store {
   display: inline-flex; align-items: center; gap: 10px;
@@ -259,7 +259,7 @@ html { scroll-padding-top: 64px; }
 .guide .where { display: block; font-weight: 700; color: var(--red); }
 .guide .where::before { content: counter(g); width: 26px; height: 26px; border-radius: 50%; background: var(--red); color: #fff; font-size: .85rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px; vertical-align: 1px; }
 .guide h2 { margin: 6px 0 8px; }
-.guide .howto { margin-top: 0; }
+.guide .howto { margin-top: 0; grid-template-columns: repeat(3, 1fr); max-width: 520px; }
 .guide .shot { max-width: 260px; text-align: center; }
 .guide .shot figcaption, .guide .howto figcaption { font-size: .85rem; color: var(--soft); margin-top: 2px; }
 .guide .shot img { display: block; width: 100%; height: auto; }
@@ -287,6 +287,8 @@ html { scroll-padding-top: 64px; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after { content: "+"; position: absolute; right: 4px; top: 12px; font-size: 1.4rem; font-weight: 400; color: var(--green); }
 .faq details[open] summary::after { content: "−"; }
+.faq .modes { padding: 0 0 8px 20px; color: var(--soft); }
+.faq .modes li { margin-bottom: 4px; }
 .faq details p { color: var(--soft); padding: 0 0 16px; }
 
 /* ---------- Text pages (privacy, support) ---------- */
