@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#10101c" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" href="img/apple-touch-icon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="stylesheet" href="style.css?v=6526989d">
+<link rel="stylesheet" href="style.css?v=b5582801">
 </head>
 <body>
 <nav class="bar" aria-label="Widen">
@@ -27,7 +27,7 @@
         <h1><span class="name">Widen</span> <span class="sub">for iPhone Duo</span></h1>
       </div>
       <p class="lede">Close your iPhone Duo and Safari gives up nearly a fifth of the outer display. <span class="lede-2"><em>Widen</em> gets it back.</span></p>
-      <p>With the Duo closed, Safari stacks its buttons in a narrow column by the camera, and every website stops well short of it. That&rsquo;s a band about 250 pixels wide showing nothing. <em>Widen</em> is a compact Safari extension that lets pictures, tables and page backgrounds run to the edge of the outer display, and text right up to Safari&rsquo;s buttons.</p>
+      <p>You paid a lot for your iPhone Duo; you should get all of the display you paid for. With the Duo closed, Safari stacks its buttons in a narrow column by the camera, and every website stops well short of it. That&rsquo;s a band about 250 pixels wide showing nothing. <em>Widen</em> is a compact Safari extension that lets pictures, tables and page backgrounds run to the edge of the outer display, and text right up to Safari&rsquo;s buttons.</p>
       <div class="cta">
         <!-- App Store link goes here once the app is live: replace href="#" and drop aria-disabled. -->
         <a class="store" id="app-store" href="#" aria-disabled="true">
@@ -48,8 +48,8 @@
       <div class="slides" tabindex="0" aria-label="Websites without and with Widen; swipe for more">
         <div class="slide" data-site="Wikipedia">
           <div class="flip-pics">
-            <img class="pic-before" src="img/before.jpg" width="932" height="1356" alt="Wikipedia's iPhone Duo article in Safari on the closed Duo, without Widen: the page stops well short of Safari's buttons, leaving an empty band">
-            <img class="pic-after" src="img/after.jpg" width="932" height="1356" alt="The same article with Widen in Pictures &amp; text mode: the article text and info box run the full width of the display">
+            <img class="pic-before" src="img/before.webp" width="760" height="1021" alt="Wikipedia's iPhone Duo article in Safari on the closed Duo, without Widen: the page stops well short of Safari's buttons, leaving an empty band">
+            <img class="pic-after" src="img/after.webp" width="760" height="1021" alt="The same article with Widen in Pictures &amp; text mode: the article text and info box run the full width of the display">
           </div>
           <p class="slide-cap"><b>Wikipedia</b>
             <span class="cap-before">The page stops short; the band by the buttons is empty.</span>
@@ -57,8 +57,8 @@
         </div>
         <div class="slide" data-site="The New York Times">
           <div class="flip-pics">
-            <img class="pic-before" src="img/nyt-before.jpg" width="932" height="1356" loading="lazy" alt="An NYT article about the iPhone Duo on the closed Duo, without Widen: the lead photo stops short of Safari's buttons">
-            <img class="pic-after" src="img/nyt-after.jpg" width="932" height="1356" loading="lazy" alt="The same article with Widen: the photo runs under Safari's buttons while the headline stays clear of them">
+            <img class="pic-before" src="img/nyt-before.webp" width="760" height="1021" loading="lazy" alt="An NYT article about the iPhone Duo on the closed Duo, without Widen: the lead photo stops short of Safari's buttons">
+            <img class="pic-after" src="img/nyt-after.webp" width="760" height="1021" loading="lazy" alt="The same article with Widen: the photo runs under Safari's buttons while the headline stays clear of them">
           </div>
           <p class="slide-cap"><b>The New York Times</b>
             <span class="cap-before">The photo stops short of the buttons.</span>
@@ -66,8 +66,8 @@
         </div>
         <div class="slide" data-site="Google Maps">
           <div class="flip-pics">
-            <img class="pic-before" src="img/maps-before.jpg" width="932" height="1356" loading="lazy" alt="Google Maps satellite view of the Sydney Opera House on the closed Duo, without Widen: the map ends at Safari's buttons">
-            <img class="pic-after" src="img/maps-after.jpg" width="932" height="1356" loading="lazy" alt="The same satellite view with Widen: the Opera House and harbour fill the whole display, under Safari's buttons">
+            <img class="pic-before" src="img/maps-before.webp" width="760" height="1021" loading="lazy" alt="Google Maps satellite view of the Sydney Opera House on the closed Duo, without Widen: the map ends at Safari's buttons">
+            <img class="pic-after" src="img/maps-after.webp" width="760" height="1021" loading="lazy" alt="The same satellite view with Widen: the Opera House and harbour fill the whole display, under Safari's buttons">
           </div>
           <p class="slide-cap"><b>Google Maps</b>
             <span class="cap-before">The map ends where the buttons begin.</span>
@@ -75,8 +75,8 @@
         </div>
         <div class="slide" data-site="US weather radar">
           <div class="flip-pics">
-            <img class="pic-before" src="img/radar-before.jpg" width="932" height="1356" loading="lazy" alt="The US National Weather Service radar map on the closed Duo, without Widen: the map ends at Safari's buttons, cutting off the East Coast">
-            <img class="pic-after" src="img/radar-after.jpg" width="932" height="1356" loading="lazy" alt="The same radar map with Widen: it fills the whole display under Safari's buttons, showing the East Coast">
+            <img class="pic-before" src="img/radar-before.webp" width="760" height="1021" loading="lazy" alt="The US National Weather Service radar map on the closed Duo, without Widen: the map ends at Safari's buttons, cutting off the East Coast">
+            <img class="pic-after" src="img/radar-after.webp" width="760" height="1021" loading="lazy" alt="The same radar map with Widen: it fills the whole display under Safari's buttons, showing the East Coast">
           </div>
           <p class="slide-cap"><b>US weather radar</b>
             <span class="cap-before">The map ends at the buttons; the East Coast is cut off.</span>
@@ -176,26 +176,42 @@
     b.addEventListener('click', () => { stop(); show(b.dataset.show); });
   }
 
-  // Carousel: one slide per website, with a dot for each (only when there's more than one).
+  // Carousel: one slide per website, wrapping round in both directions.
+  // A copy of the last slide sits before the first and a copy of the first
+  // after the last; landing on a copy jumps, unseen, to the real one.
   const track = fig.querySelector('.slides');
-  const slides = [...track.querySelectorAll('.slide')];
+  const real = [...track.querySelectorAll('.slide')];
+  const n = real.length;
   const dots = fig.querySelector('.dots');
-  if (slides.length > 1) {
-    slides.forEach((s, i) => {
+  let go = () => {};
+  if (n > 1) {
+    const head = real[n - 1].cloneNode(true), tail = real[0].cloneNode(true);
+    for (const c of [head, tail]) { c.setAttribute('aria-hidden', 'true'); c.querySelectorAll('img').forEach(i => i.loading = 'eager'); }
+    track.prepend(head); track.append(tail);
+    const all = [...track.querySelectorAll('.slide')];
+    const at = () => Math.round(track.scrollLeft / track.clientWidth);
+    const jump = i => { track.style.scrollSnapType = 'none'; track.scrollLeft = i * track.clientWidth; track.offsetHeight; track.style.scrollSnapType = ''; };
+    go = i => track.scrollTo({ left: i * track.clientWidth, behavior: still ? 'auto' : 'smooth' });
+    real.forEach((s, i) => {
       const d = document.createElement('button');
       d.type = 'button'; d.setAttribute('role', 'tab'); d.setAttribute('aria-label', s.dataset.site);
-      d.addEventListener('click', () => { stop(); track.scrollTo({ left: s.offsetLeft - track.offsetLeft, behavior: still ? 'auto' : 'smooth' }); });
+      d.addEventListener('click', () => { stop(); go(i + 1); });
       dots.append(d);
     });
-    let current = 0;
+    let current = 1, settle = 0;
     const mark = () => {
-      const i = Math.round(track.scrollLeft / track.clientWidth);
+      const i = at(), r = (i - 1 + n) % n;
       if (i !== current) { current = i; show('after'); }      // each site opens With Widen
-      [...dots.children].forEach((d, j) => d.setAttribute('aria-selected', String(i === j)));
+      [...dots.children].forEach((d, j) => d.setAttribute('aria-selected', String(j === r)));
+      clearTimeout(settle);
+      settle = setTimeout(() => { const k = at(); if (k === 0) jump(n); else if (k === n + 1) jump(1); }, 140);
     };
+    jump(1);
     track.addEventListener('scroll', () => requestAnimationFrame(mark), { passive: true });
+    addEventListener('resize', () => jump(current));
     track.addEventListener('pointerdown', stop, { passive: true });
     mark();
+    go.next = () => go(at() + 1);
   } else {
     dots.hidden = true;
   }
@@ -206,10 +222,7 @@
     timer = setInterval(() => {
       if (flips < 2) { flips++; return show(fig.dataset.state === 'after' ? 'before' : 'after'); }
       flips = 0;
-      if (slides.length > 1) {
-        const i = (Math.round(track.scrollLeft / track.clientWidth) + 1) % slides.length;
-        track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: 'smooth' });
-      }
+      if (go.next) go.next();
       show('after');
     }, 2600);
   }
