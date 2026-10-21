@@ -20,7 +20,12 @@ def duo(wide, label, uid, notes=False):
     a(f'<svg class="duo" viewBox="0 0 518 730" role="img" aria-label="{label}">')
     a(f'<defs><clipPath id="scr-{uid}"><path d="M{X} {Y}h{W-44}a44 44 0 0 1 44 44v{H-88}a44 44 0 0 1-44 44h-{W-44}z"/></clipPath></defs>')
     # body: the hinge side is square, the free side rounded
+    # the Duo's buttons: two on the top edge, one on the right side
+    a('<rect class="d-key" x="238" y="0" width="60" height="7" rx="2.5"/>')
+    a('<rect class="d-key" x="314" y="0" width="66" height="7" rx="2.5"/>')
+    a('<rect class="d-key" x="510" y="206" width="8" height="86" rx="2.5"/>')
     a(f'<path class="d-body" d="M8 4h444a62 62 0 0 1 62 62v598a62 62 0 0 1-62 62h-444a6 6 0 0 1-6-6v-710a6 6 0 0 1 6-6z"/>')
+    a('<rect class="d-hinge" x="2" y="4" width="10" height="722" rx="4"/>')
     a(f'<g clip-path="url(#scr-{uid})">')
     a(f'<rect class="d-screen" x="{X}" y="{Y}" width="{W}" height="{H}"/>')
     if not wide:

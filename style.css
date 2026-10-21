@@ -139,6 +139,8 @@ html { scroll-padding-top: 64px; }
 
 .duo { width: 100%; height: auto; display: block; filter: drop-shadow(0 12px 24px rgba(20, 26, 46, .22)); }
 .d-body { fill: var(--d-body); }
+.d-key { fill: #3d3d42; }
+.d-hinge { fill: #000; opacity: .45; }
 .d-screen { fill: var(--d-screen); }
 .d-gutter { fill: var(--d-gutter); }
 .d-bar { fill: var(--d-bar); }
@@ -161,12 +163,29 @@ html { scroll-padding-top: 64px; }
 }
 .slides::-webkit-scrollbar { display: none; }
 .slides:focus-visible { outline: 2px solid var(--navy-b); outline-offset: 4px; border-radius: 12px; }
-.slide { flex: 0 0 100%; scroll-snap-align: center; padding: 6px 10px 18px; box-sizing: border-box; }
-.flip-pics { display: grid; }
+.slide { flex: 0 0 100%; scroll-snap-align: center; padding: 10px 14px 18px; box-sizing: border-box; }
+/* The closed Duo: square hinge edge on the left, rounded free edge on the
+   right, two buttons on the top edge and one on the right side. */
+.flip-pics {
+  display: grid; position: relative;
+  padding: 3.2% 3.2% 3.2% 4.6%;
+  background: linear-gradient(90deg, #121214 0 2.4%, #2c2c30 2.4% 100%);
+  border-radius: 3% 11% 11% 3% / 2% 8% 8% 2%;
+  box-shadow: 0 0 0 1px #4a4a50 inset, 0 14px 28px rgba(20, 26, 46, .22);
+}
+.flip-pics::before {           /* top buttons */
+  content: ""; position: absolute; top: -1.1%; left: 46%; width: 28%; height: 1.4%;
+  background: linear-gradient(90deg, #3d3d42 0 43%, transparent 43% 57%, #3d3d42 57% 100%);
+  border-radius: 3px 3px 0 0;
+}
+.flip-pics::after {            /* side button */
+  content: ""; position: absolute; right: -1.6%; top: 28%; width: 1.8%; height: 12%;
+  background: #3d3d42; border-radius: 0 3px 3px 0;
+}
 .flip-pics img {
   grid-area: 1 / 1; display: block; width: 100%; height: auto; background: #fff;
-  border: 9px solid #1b1d24; border-left-width: 6px; border-radius: 6px 34px 34px 6px;
-  box-shadow: 0 8px 16px rgba(20, 26, 46, .18); transition: opacity .45s ease;
+  border-radius: 1.5% 8% 8% 1.5% / 1% 5.5% 5.5% 1%;
+  transition: opacity .45s ease;
 }
 .flip[data-state="after"] .pic-before, .flip[data-state="before"] .pic-after { opacity: 0; }
 .slide-cap { margin-top: 12px; font-size: .92rem; color: var(--soft); min-height: 4.4em; text-wrap: balance; }
