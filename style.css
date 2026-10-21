@@ -191,7 +191,9 @@ html { scroll-padding-top: 64px; }
 .shrinking .brand img, .shrinking .brand .name { position: relative; display: inline-block; transform-origin: 0 0; will-change: transform; }
 
 .d-note { fill: var(--red); stroke: var(--bg); stroke-width: 4; }
-.d-note-n { fill: #fff; font: 700 22px -apple-system, BlinkMacSystemFont, sans-serif; }
+.d-note.n2 { fill: var(--orange); } .d-note.n3 { fill: var(--teal); } .d-note.n4 { fill: var(--green); }
+.d-note-n { fill: var(--glyph-ink, #fff); }
+.d-note-n { font: 700 22px -apple-system, BlinkMacSystemFont, sans-serif; }
 
 /* ---------- Real screenshots ---------- */
 .shots { display: grid; grid-template-columns: repeat(2, minmax(0, 300px)); justify-content: center; gap: 28px; margin-top: 30px; }
@@ -216,6 +218,8 @@ html { scroll-padding-top: 64px; }
   width: 28px; height: 28px; border-radius: 50%; background: var(--red); color: #fff;
   font-weight: 700; font-size: .9rem; display: flex; align-items: center; justify-content: center;
 }
+.notes li:nth-child(2)::before { background: var(--orange); } .notes li:nth-child(3)::before { background: var(--teal); } .notes li:nth-child(4)::before { background: var(--green); }
+.notes li::before { color: var(--glyph-ink, #fff); }
 .aside { color: var(--soft); margin-top: 10px; }
 
 /* ---------- Extras ---------- */
@@ -259,7 +263,7 @@ html { scroll-padding-top: 64px; }
 .guide .where { display: block; font-weight: 700; color: var(--red); }
 .guide .where::before { content: counter(g); width: 26px; height: 26px; border-radius: 50%; background: var(--red); color: #fff; font-size: .85rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px; vertical-align: 1px; }
 .guide h2 { margin: 6px 0 8px; }
-.guide .howto { margin-top: 0; grid-template-columns: repeat(3, 1fr); max-width: 520px; }
+.guide .howto { margin-top: 0; grid-template-columns: 1fr; max-width: 260px; gap: 18px; }
 .guide .shot { max-width: 260px; text-align: center; }
 .guide .shot figcaption, .guide .howto figcaption { font-size: .85rem; color: var(--soft); margin-top: 2px; }
 .guide .shot img { display: block; width: 100%; height: auto; }

@@ -54,7 +54,7 @@ def duo(wide, label, uid, notes=False):
     a('</g>')
     if notes:  # numbered markers for the legend beside the picture
         for n, (cx, cy) in enumerate(((strip + 30, Y + 140), (strip - 30, Y + 430), (strip - 12, Y + 64), (X + m + 40, Y + 560)), 1):
-            a(f'<circle class="d-note" cx="{cx}" cy="{cy}" r="19"/>')
+            a(f'<circle class="d-note n{n}" cx="{cx}" cy="{cy}" r="19"/>')
             a(f'<text class="d-note-n" x="{cx}" y="{cy + 7}" text-anchor="middle">{n}</text>')
     a('</svg>')
     return ''.join(out)
