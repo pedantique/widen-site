@@ -9,7 +9,7 @@ Geometry is the real one at 1 unit = 1 pt: a 466 x 678 display with Safari's
 import pathlib, re
 
 def duo(wide, label, uid, notes=False):
-    X, Y, W, H = 26, 26, 466, 678           # the display
+    X, Y, W, H = 75, 63, 466, 678           # the display, inside img/duo-frame.webp
     edge = X + (W if wide else 382)          # where the page's layout ends
     strip = X + 382                          # Safari's controls start here
     m = 18                                   # page margin
@@ -17,16 +17,11 @@ def duo(wide, label, uid, notes=False):
     text_right = strip + 4 if wide else strip - 14   # words run up to the buttons, never under them
     out = []
     a = out.append
-    a(f'<svg class="duo" viewBox="0 0 518 730" role="img" aria-label="{label}">')
-    a(f'<defs><clipPath id="scr-{uid}"><path d="M{X} {Y}h{W-44}a44 44 0 0 1 44 44v{H-88}a44 44 0 0 1-44 44h-{W-44}z"/></clipPath></defs>')
-    # body: the hinge side is square, the free side rounded
-    # the Duo's buttons: two on the top edge, one on the right side
-    a('<rect class="d-key" x="238" y="0" width="60" height="7" rx="2.5"/>')
-    a('<rect class="d-key" x="314" y="0" width="66" height="7" rx="2.5"/>')
-    a('<rect class="d-key" x="510" y="206" width="8" height="86" rx="2.5"/>')
-    a(f'<path class="d-body" d="M8 4h444a62 62 0 0 1 62 62v598a62 62 0 0 1-62 62h-444a6 6 0 0 1-6-6v-710a6 6 0 0 1 6-6z"/>')
-    a('<rect class="d-hinge" x="2" y="4" width="10" height="722" rx="4"/>')
-    a(f'<g clip-path="url(#scr-{uid})">')
+    a(f'<svg class="duo" viewBox="0 0 612 795" role="img" aria-label="{label}">')
+    # the iPhone Duo simulator's own frame, and its display's exact corner shape
+    a(f'<defs><mask id="scr-{uid}"><image href="img/duo-screen-mask.png" x="{X}" y="{Y}" width="{W}" height="{H}"/></mask></defs>')
+    a('<image href="img/duo-frame.webp" x="0" y="0" width="612" height="795"/>')
+    a(f'<g mask="url(#scr-{uid})">')
     a(f'<rect class="d-screen" x="{X}" y="{Y}" width="{W}" height="{H}"/>')
     if not wide:
         a(f'<rect class="d-gutter" x="{strip}" y="{Y}" width="{W-382}" height="{H}"/>')
