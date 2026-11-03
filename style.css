@@ -130,13 +130,8 @@ html { scroll-padding-top: 64px; }
 .lede-2 { display: block; margin-top: .35em; }
 .lede ~ p:not(.cta) { color: var(--soft); margin-top: 12px; font-size: 1.05rem; }
 .cta { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: center; }
-.store {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: var(--ink); color: var(--bg); text-decoration: none;
-  padding: 12px 22px; border-radius: 12px; font-weight: 600;
-}
-.store small { display: block; font-weight: 400; font-size: .72rem; opacity: .75; line-height: 1.1; }
-.store b { display: block; font-size: 1.05rem; line-height: 1.2; }
+.store { display: inline-block; line-height: 0; }
+.store img { display: block; width: 162px; height: 54px; }
 .cta .note { color: var(--faint); font-size: .9rem; }
 
 .duo { width: 100%; height: auto; display: block; filter: drop-shadow(0 12px 24px rgba(20, 26, 46, .22)); }
