@@ -137,7 +137,6 @@ html { scroll-padding-top: 64px; }
 }
 .store small { display: block; font-weight: 400; font-size: .72rem; opacity: .75; line-height: 1.1; }
 .store b { display: block; font-size: 1.05rem; line-height: 1.2; }
-.store[aria-disabled="true"] { cursor: default; }
 .cta .note { color: var(--faint); font-size: .9rem; }
 
 .duo { width: 100%; height: auto; display: block; filter: drop-shadow(0 12px 24px rgba(20, 26, 46, .22)); }

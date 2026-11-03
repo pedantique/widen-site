@@ -3,8 +3,7 @@
 Static site for **Widen for iPhone Duo** (landing page, privacy policy, support),
 served by GitHub Pages from `main` at <https://widen.challis.com.au/> (CNAME; also reachable via pedantique.github.io/widen-site).
 
-- `index.html`: landing page. The App Store button is a placeholder (`id="app-store"`):
-  set its `href` and remove `aria-disabled` once the app is live.
+- `index.html`: landing page. The App Store button (`id="app-store"`) links to the live listing.
 - `privacy/`: App Store privacy policy URL.
 - `support/`: App Store support URL (widen@challis.com.au).
 - `style.css`: shared styles, light and dark.

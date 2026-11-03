@@ -4,7 +4,7 @@
 # (GitHub Pages lets browsers keep files for 10 minutes). Run after editing style.css.
 cd "$(dirname "$0")/.." || exit 1
 v=$(shasum style.css | cut -c1-8)
-for f in index.html faq/index.html privacy/index.html support/index.html; do
+for f in index.html faq/index.html privacy/index.html support/index.html setup/index.html; do
   sed -i '' -E "s#href=\"((\.\./)?style\.css)(\?v=[0-9a-f]+)?\"#href=\"\1?v=$v\"#" "$f"
 done
 echo "style.css?v=$v"
