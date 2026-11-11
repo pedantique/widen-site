@@ -256,6 +256,8 @@ html { scroll-padding-top: 64px; }
 .path { font-weight: 600; color: var(--ink); }
 
 .panel-one { max-width: 320px; margin: 28px auto 0; text-align: center; }
+.panel-pair { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 28px; }
+.panel-pair .panel-one { flex: 1 1 260px; margin-left: 0; margin-right: 0; }
 .panel-one img { display: block; width: 100%; height: auto; }
 .panel-one figcaption { font-size: .9rem; color: var(--soft); margin-top: 4px; }
 .panels { display: grid; grid-template-columns: repeat(2, minmax(0, 300px)); justify-content: center; gap: 24px; margin-top: 28px; }
